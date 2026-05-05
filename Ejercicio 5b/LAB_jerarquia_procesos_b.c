@@ -14,13 +14,14 @@ void print_pid(char name);
 int main(){
     
     /*variables*/
-    pid_t pid_t, pid_v, pid_w, pid_s, pid_l, pid_p = -1;
+    pid_t pid_T, pid_v, pid_w, pid_s, pid_l, pid_p = -1;
     /*VARIABLES*/
 
-    pid_t = fork();
-    pid_w = fork();
-
-    if(pid_t == 0){
+    pid_T = fork();
+    if(pid_T != 0){
+        pid_w = fork();
+    }
+    if(pid_T == 0){
         print_pid('T');
         
         pid_v = fork();
@@ -36,7 +37,10 @@ int main(){
         print_pid('W');
 
         pid_s = fork();
-        pid_l = fork();
+        if(pid_T != 0){
+            pid_l = fork();
+        }
+        
 
         if(pid_s == 0){
             print_pid('S');
@@ -54,7 +58,6 @@ int main(){
             exit(0);
         }
     }
-
     print_pid('R');
     return 0;
 }

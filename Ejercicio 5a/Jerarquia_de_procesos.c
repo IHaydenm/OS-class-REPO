@@ -10,7 +10,7 @@
 /*functions*/
 void print_pid(char name);
 void create_file(char file_Name[], int num_array[], int array_size);
-void read_file(char file_Name_N[], char file_Name_M[], int array_size);
+void read_file(char file_Name[], int array_size);
 /*FUNCTIONS*/
 
 int main(){
@@ -51,7 +51,7 @@ void create_file(char file_Name[], int num_array[], int array_size){
 void read_file(char file_Name[], int array_size){
     /*local variables*/
     int fd, m;
-    fd = open(file_Name_M, 0);
+    fd = open(file_Name, 0);
     int num_array_read[5] = { 0, 0, 0, 0, 0 };
     /*LOCAL VARIABLES*/
     

@@ -20,6 +20,7 @@ int main () {
         print_pid('A');
         exit(0);
     }
+    
     //create second son
     pid_b = fork();
 
