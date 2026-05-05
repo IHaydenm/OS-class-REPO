@@ -10,6 +10,7 @@ void* right_key_turning(void* arg){
     R_key = 1;
     pthread_cond_signal(&right_key_cond);
     pthread_mutex_unlock(&mutex);
+    printf("Llave derecha girada!\n");
     pthread_exit(NULL);
 }
 
@@ -20,18 +21,19 @@ void* left_key_turning(void* arg){
     }
     L_key = 1;
     pthread_mutex_unlock(&mutex);
+    printf("Llave izquierda girada!\n");
     pthread_exit(NULL);
 }
 
 
 int main(){
     pthread_t key_lock_1, key_lock_2;
-    pthread_mutex_init(&mutex, 0)
+    pthread_mutex_init(&mutex, 0);
     pthread_cond_init(&right_key_cond, 0);
 
     pthread_create(&key_lock_1, NULL, right_key_turning, NULL);
     pthread_create(&key_lock_2, NULL, left_key_turning, NULL);
     
-    pthread_join(key_lock_1, NULL)
+    pthread_join(key_lock_1, NULL);
     return 0;
 }
